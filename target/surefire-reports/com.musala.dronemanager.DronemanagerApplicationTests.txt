@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.musala.dronemanager.DronemanagerApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.877 s - in com.musala.dronemanager.DronemanagerApplicationTests

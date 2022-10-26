@@ -1,0 +1,38 @@
+DROP TABLE IF EXISTS DRONES;
+
+CREATE TABLE DRONES (
+    id int AUTO_INCREMENT PRIMARY KEY,
+    serialnumber VARCHAR (100) UNIQUE NOT NULL,
+    model ENUM ('Lightweight', 'Middleweight', 'Cruiserweight', 'Heavyweight'),
+    weightLimit DECIMAL (6,3),
+    batteryCapacity INT NOT NULL,
+    state ENUM ('IDLE', 'LOADING', 'LOADED', 'DELIVERING', 'DELIVERED', 'RETURNING')
+);
+
+DROP TABLE IF EXISTS MEDICATIONS;
+
+CREATE TABLE MEDICATIONS (
+    id int AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR (250) NOT NULL,
+    code VARCHAR (200) NOT NULL,
+    weight DECIMAL (6,3),
+    image BLOB
+);
+
+
+DROP TABLE IF EXISTS DISPATCHES;
+
+CREATE TABLE DISPATCHES (
+    id int AUTO_INCREMENT PRIMARY KEY,
+    droneId INT,
+    status VARCHAR (50) NOT NULL
+);
+
+DROP TABLE IF EXISTS DISPATCH_ITEMS;
+CREATE TABLE DISPATCH_ITEMS (
+    id int AUTO_INCREMENT PRIMARY KEY,
+    dispatchId INT,
+    medicationId INT,
+    quantity INT
+);
+

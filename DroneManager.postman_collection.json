@@ -1,0 +1,507 @@
+{
+	"info": {
+		"_postman_id": "b2917674-a020-44b8-aac6-6ae0c221f4af",
+		"name": "DroneManager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2025968"
+	},
+	"item": [
+		{
+			"name": "Register Drone",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function randomString(minValue, maxValue, dataSet = 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ') {",
+							"    if (!minValue) {",
+							"        minValue = 20;",
+							"        maxValue = 20;",
+							"    }",
+							"",
+							"    if (!maxValue) {",
+							"        maxValue = minValue;",
+							"    }",
+							"",
+							"    let length = _.random(minValue, maxValue),",
+							"        randomString = \"\";",
+							"",
+							"    for (let i = 0; i < length; i++)",
+							"        randomString += dataSet.charAt(Math.floor(Math.random() * dataSet.length));",
+							"    return randomString;",
+							"}",
+							"",
+							"pm.variables.set('serial_number', randomString());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"serial_number\":\"{{serial_number}}\",\n    \"model\":\"LightWeightss\",\n    \"column\":2,\n    \"name\":\"Joe Gomez\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/drone/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"drone",
+						"register"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Register Drone",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"serialNumber\":\"{{serial_number}}\",\n    \"model\":\"LightWeightss\",\n    \"weightLimit\":456,\n    \"batteryCapacity\":98\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/drone/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"drone",
+								"register"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 24 Sep 2022 09:05:22 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 2,\n    \"serialNumber\": \"ob9cVbcCYN85BEGiIxVF\",\n    \"model\": \"LightWeightss\",\n    \"weightLimit\": 456,\n    \"batteryCapacity\": 98,\n    \"state\": \"IDLE\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Load Drone With Medication",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function randomString(minValue, maxValue, dataSet = 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ') {",
+							"    if (!minValue) {",
+							"        minValue = 20;",
+							"        maxValue = 20;",
+							"    }",
+							"",
+							"    if (!maxValue) {",
+							"        maxValue = minValue;",
+							"    }",
+							"",
+							"    let length = _.random(minValue, maxValue),",
+							"        randomString = \"\";",
+							"",
+							"    for (let i = 0; i < length; i++)",
+							"        randomString += dataSet.charAt(Math.floor(Math.random() * dataSet.length));",
+							"    return randomString;",
+							"}",
+							"",
+							"pm.variables.set('serial_number', randomString());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"serial_number\":\"{{serial_number}}\",\n    \"model\":\"LightWeightss\",\n    \"column\":2,\n    \"name\":\"Joe Gomez\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/drone/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"drone",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Drones",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/drone/all",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"drone",
+						"all"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Drones",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/drone/all",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"drone",
+								"all"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 24 Sep 2022 12:12:19 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"serialNumber\": \"1234567\",\n        \"model\": \"Lightweight\",\n        \"weightLimit\": 450,\n        \"batteryCapacity\": 100,\n        \"state\": \"IDLE\"\n    },\n    {\n        \"id\": 2,\n        \"serialNumber\": \"1234568\",\n        \"model\": \"Cruiserweight\",\n        \"weightLimit\": 310,\n        \"batteryCapacity\": 100,\n        \"state\": \"IDLE\"\n    },\n    {\n        \"id\": 3,\n        \"serialNumber\": \"1234569\",\n        \"model\": \"Heavyweight\",\n        \"weightLimit\": 500,\n        \"batteryCapacity\": 100,\n        \"state\": \"IDLE\"\n    },\n    {\n        \"id\": 4,\n        \"serialNumber\": \"1234563\",\n        \"model\": \"Lightweight\",\n        \"weightLimit\": 120,\n        \"batteryCapacity\": 100,\n        \"state\": \"IDLE\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get Drone Battery Level",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/drone/battery-level/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"drone",
+						"battery-level",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Drone Battery Level",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/drone/battery-level/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"drone",
+								"battery-level",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 24 Sep 2022 18:46:07 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "100"
+				}
+			]
+		},
+		{
+			"name": "Get Drone Loaded Medication",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/drone/currentload/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"drone",
+						"currentload",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Drone Loaded Medication",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/drone/currentload/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"drone",
+								"currentload",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 25 Sep 2022 15:47:23 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Acetaminophen\",\n        \"code\": \"ACET\",\n        \"weight\": 13,\n        \"image\": \"MDA0MTAwNjMwMDY1MDA3NDAwNjEwMDZkMDA2OTAwNmUwMDZmMDA3MDAwNjgwMDY1MDA2ZTAwNWYwMDY5MDA2ZDAwNjEwMDY3MDA2NQ==\"\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Paracetamol\",\n        \"code\": \"PARAC\",\n        \"weight\": 185,\n        \"image\": \"MDA1MDAwNjEwMDcyMDA2MTAwNjMwMDY1MDA3NDAwNjEwMDZkMDA2ZjAwNmMwMDVmMDA2OTAwNmQwMDYxMDA2NzAwNjU=\"\n    },\n    {\n        \"id\": 3,\n        \"name\": \"Flagyl\",\n        \"code\": \"FLAG\",\n        \"weight\": 57,\n        \"image\": \"MDA0NjAwNmMwMDYxMDA2NzAwNzkwMDZjMDA1ZjAwNjkwMDZkMDA2MTAwNjcwMDY1\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Check Available Drones",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/isAvailable/2/5",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"isAvailable",
+						"2",
+						"5"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Check Available Drones",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/drone/available",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"drone",
+								"available"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 24 Sep 2022 18:52:52 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"serialNumber\": \"1234567\",\n        \"model\": \"Lightweight\",\n        \"weightLimit\": 450,\n        \"batteryCapacity\": 100,\n        \"state\": \"IDLE\"\n    },\n    {\n        \"id\": 2,\n        \"serialNumber\": \"1234568\",\n        \"model\": \"Cruiserweight\",\n        \"weightLimit\": 310,\n        \"batteryCapacity\": 100,\n        \"state\": \"IDLE\"\n    },\n    {\n        \"id\": 3,\n        \"serialNumber\": \"1234569\",\n        \"model\": \"Heavyweight\",\n        \"weightLimit\": 500,\n        \"batteryCapacity\": 100,\n        \"state\": \"IDLE\"\n    },\n    {\n        \"id\": 4,\n        \"serialNumber\": \"1234563\",\n        \"model\": \"Lightweight\",\n        \"weightLimit\": 120,\n        \"batteryCapacity\": 100,\n        \"state\": \"IDLE\"\n    }\n]"
+				},
+				{
+					"name": "Check Available Drones",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/drone/available",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"drone",
+								"available"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 24 Sep 2022 18:57:41 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 2,\n        \"serialNumber\": \"1234568\",\n        \"model\": \"Cruiserweight\",\n        \"weightLimit\": 310,\n        \"batteryCapacity\": 100,\n        \"state\": \"IDLE\"\n    },\n    {\n        \"id\": 3,\n        \"serialNumber\": \"1234569\",\n        \"model\": \"Heavyweight\",\n        \"weightLimit\": 500,\n        \"batteryCapacity\": 100,\n        \"state\": \"IDLE\"\n    },\n    {\n        \"id\": 4,\n        \"serialNumber\": \"1234563\",\n        \"model\": \"Lightweight\",\n        \"weightLimit\": 120,\n        \"batteryCapacity\": 100,\n        \"state\": \"IDLE\"\n    }\n]"
+				}
+			]
+		}
+	]
+}

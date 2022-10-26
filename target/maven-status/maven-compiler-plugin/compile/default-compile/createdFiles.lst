@@ -1,0 +1,11 @@
+com/cspydo/dronemanager/repository/MedicationRepository.class
+com/cspydo/dronemanager/model/Medication.class
+com/cspydo/dronemanager/repository/DroneRepository.class
+com/cspydo/dronemanager/controller/DispatchController.class
+com/cspydo/dronemanager/repository/DispatchRepository.class
+com/cspydo/dronemanager/model/DispatchItem.class
+com/cspydo/dronemanager/controller/DroneController.class
+com/cspydo/dronemanager/DronemanagerApplication.class
+com/cspydo/dronemanager/model/Dispatch.class
+com/cspydo/dronemanager/model/Drone.class
+com/cspydo/dronemanager/repository/DispatchItemRepository.class
